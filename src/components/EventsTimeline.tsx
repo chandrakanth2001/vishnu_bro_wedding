@@ -11,11 +11,11 @@ export const EventsTimeline: React.FC = () => {
     const icsContent = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Devika & Govind Wedding//EN',
+      'PRODID:-//Vishnu & Nayana Wedding//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
       'BEGIN:VEVENT',
-      `SUMMARY:Devika & Govind - ${eventTitle}`,
+      `SUMMARY:Vishnu & Nayana - ${eventTitle}`,
       `DESCRIPTION:${eventDesc}`,
       `LOCATION:${weddingData.venue.fullAddress}`,
       'DTSTART:20261025T061400Z',
@@ -24,7 +24,7 @@ export const EventsTimeline: React.FC = () => {
       'BEGIN:VALARM',
       'TRIGGER:-PT24H',
       'ACTION:DISPLAY',
-      `DESCRIPTION:Reminder for Devika & Govind Wedding (${eventTitle})`,
+      `DESCRIPTION:Reminder for Vishnu & Nayana Wedding (${eventTitle})`,
       'END:VALARM',
       'END:VEVENT',
       'END:VCALENDAR',
@@ -33,7 +33,7 @@ export const EventsTimeline: React.FC = () => {
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.download = `devika-govind-${eventTitle.toLowerCase().replace(/[^a-z0-9]/g, '-')}.ics`;
+    link.download = `vishnu-nayana-${eventTitle.toLowerCase().replace(/[^a-z0-9]/g, '-')}.ics`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

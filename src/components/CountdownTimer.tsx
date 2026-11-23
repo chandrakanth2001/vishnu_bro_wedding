@@ -214,7 +214,7 @@ export const CountdownTimer: React.FC = () => {
           <div className="py-8 px-6 bg-[#FAF6EE] border border-[#D4AF37] rounded-2xl max-w-lg mx-auto card-paper-texture">
             <h3 className="font-script text-4xl text-[#541D30] mb-2">The Wedding Celebration is Here!</h3>
             <p className="font-cormorant text-lg text-[#2C221E] italic">
-              Thank you for blessing Devika & Govind on their auspicious wedding day!
+              Thank you for blessing Vishnu & Nayana on their auspicious wedding day!
             </p>
           </div>
         ) : (
