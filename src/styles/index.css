@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #FDFBF7;
+    --color-ivory-dark: #F7F1E5;
+    --color-gold: #D4AF37;
+    --color-gold-dark: #B38728;
+    --color-gold-light: #F4E297;
+    --color-kerala-green: #264D24;
+    --color-maroon: #7A1F2D;
+    --color-charcoal: #2C221E;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-image:
+      radial-gradient(#D4AF37 0.4px, transparent 0.4px),
+      radial-gradient(#264D24 0.4px, #FDFBF7 0.4px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    background-color: #FDFBF7;
+  }
+}
+
+/* Custom Font Utilities */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cinzel-decorative {
+  font-family: 'Cinzel Decorative', cursive, serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-script {
+  font-family: 'Edwardian Script ITC', 'Great Vibes', 'Alex Brush', cursive;
+  font-weight: 400;
+  line-height: 1.4;
+  padding-top: 0.2em;
+  padding-bottom: 0.25em;
+  padding-left: 0.25em;
+  padding-right: 0.4em;
+  overflow: visible;
+  display: inline-block;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Gold Gradient Text & Borders */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #7A5A09 0%, #B38728 25%, #E5C158 50%, #C99700 75%, #7A5A09 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0px 1px 2px rgba(44, 34, 30, 0.25));
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #7A5A09 0%, #B38728 25%, #E5C158 50%, #C99700 75%, #7A5A09 100%);
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #B38728 0%, #F4E297 50%, #AA771C 100%) 1;
+}
+
+.gold-box-shadow {
+  box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.25), 0 4px 12px rgba(44, 34, 30, 0.08);
+}
+
+.card-paper-texture {
+  background-color: #FAF6EE;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(244, 235, 216, 0.3) 100%);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 36px rgba(44, 34, 30, 0.06), inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+/* Custom Animation Keyframes */
+@keyframes flameFlicker {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.9));
+  }
+
+  25% {
+    transform: scale(1.08) rotate(1.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 183, 3, 1));
+  }
+
+  50% {
+    transform: scale(0.96) rotate(-0.5deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 6px rgba(255, 183, 3, 0.8));
+  }
+
+  75% {
+    transform: scale(1.04) rotate(1deg);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.95));
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 1.8s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes garlandSway {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+.animate-sway-slow {
+  animation: garlandSway 6s infinite ease-in-out;
+  transform-origin: top center;
+}
+
+.animate-sway-reverse {
+  animation: garlandSway 7.5s infinite ease-in-out reverse;
+  transform-origin: top center;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #8C6713 0%, #E5C158 50%, #8C6713 100%);
+  background-size: 200% 100%;
+  animation: shimmerEffect 4s infinite linear;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B38728;
+}
+
+/* Infinite Smooth Marquee Carousel */
+@keyframes marqueeScrollRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes marqueeScrollLeft {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollRight 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollLeft 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right:hover,
+.animate-marquee-left:hover {
+  animation-play-state: paused;
+}
