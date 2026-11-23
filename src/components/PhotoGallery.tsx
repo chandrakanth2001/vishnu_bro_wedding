@@ -144,9 +144,9 @@ export const PhotoGallery: React.FC = () => {
                         {img.title}
                       </h3>
                     )}
-                    <p className="font-cormorant text-sm sm:text-base italic text-white line-clamp-2 drop-shadow-md font-medium">
+                    {/* <p className="font-cormorant text-sm sm:text-base italic text-white line-clamp-2 drop-shadow-md font-medium">
                       {img.caption}
-                    </p>
+                    </p> */}
                     <div className="absolute bottom-4 right-4 w-8 h-8 rounded-full bg-[#FAF6EE]/20 backdrop-blur-sm flex items-center justify-center text-white border border-white/40 group-hover:scale-110 transition-transform">
                       <Maximize2 className="w-3.5 h-3.5" />
                     </div>
@@ -220,9 +220,9 @@ export const PhotoGallery: React.FC = () => {
                       {images[lightboxIndex].title}
                     </h3>
                   )}
-                  <p className="font-cormorant text-lg italic text-white font-semibold drop-shadow-md mt-1">
+                  {/* <p className="font-cormorant text-lg italic text-white font-semibold drop-shadow-md mt-1">
                     {images[lightboxIndex].caption}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </motion.div>
