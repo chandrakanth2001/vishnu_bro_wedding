@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, Maximize2, Play, Pause } from 'lucide-react';
 import { weddingData } from '../data/wedding';
@@ -8,10 +8,48 @@ export const PhotoGallery: React.FC = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState<'right' | 'left'>('right');
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const images = weddingData.gallery;
-  // Duplicate array for 100% seamless infinite loop
-  const duplicatedImages = [...images, ...images];
+  // Exactly 5 unique pictures without duplicates
+  const images = weddingData.gallery.slice(0, 5);
+
+  // Smooth auto-scroll loop for the 5 pictures
+  useEffect(() => {
+    if (isPaused) return;
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const interval = setInterval(() => {
+      if (!container) return;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) return;
+
+      if (direction === 'right') {
+        if (container.scrollLeft >= maxScroll - 5) {
+          setDirection('left');
+        } else {
+          container.scrollLeft += 1.5;
+        }
+      } else {
+        if (container.scrollLeft <= 5) {
+          setDirection('right');
+        } else {
+          container.scrollLeft -= 1.5;
+        }
+      }
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [isPaused, direction]);
+
+  const handleScroll = (scrollDirection: 'left' | 'right') => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 360;
+    scrollRef.current.scrollBy({
+      left: scrollDirection === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
 
   // Keyboard navigation for Lightbox
   useEffect(() => {
@@ -61,25 +99,31 @@ export const PhotoGallery: React.FC = () => {
           <div className="flex items-center gap-3">
             {/* Direction Left/Right Toggle Buttons */}
             <button
-              onClick={() => setDirection('left')}
+              onClick={() => {
+                setDirection('left');
+                handleScroll('left');
+              }}
               className={`p-2 rounded-full border transition-all cursor-pointer ${
                 direction === 'left'
                   ? 'bg-[#D4AF37] text-[#FAF6EE] border-[#D4AF37] shadow-md'
                   : 'bg-[#FAF6EE] text-[#7A5C14] border-[#D4AF37]/40 hover:border-[#D4AF37]'
               }`}
-              title="Flow Left"
+              title="Scroll Left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
             <button
-              onClick={() => setDirection('right')}
+              onClick={() => {
+                setDirection('right');
+                handleScroll('right');
+              }}
               className={`p-2 rounded-full border transition-all cursor-pointer ${
                 direction === 'right'
                   ? 'bg-[#D4AF37] text-[#FAF6EE] border-[#D4AF37] shadow-md'
                   : 'bg-[#FAF6EE] text-[#7A5C14] border-[#D4AF37]/40 hover:border-[#D4AF37]'
               }`}
-              title="Flow Right"
+              title="Scroll Right"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -98,27 +142,23 @@ export const PhotoGallery: React.FC = () => {
           </div>
         </div>
 
-        {/* INFINITE SMOOTH SIDEWAYS FLOWING CAROUSEL */}
+        {/* SMOOTH SIDEWAYS FLOWING CAROUSEL */}
         <div className="relative w-full overflow-hidden py-4 border-y border-[#D4AF37]/30 bg-[#FAF6EE]/40 rounded-3xl">
           {/* Subtle Side Fade Gradients for Luxurious Edge Blend */}
           <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#FDFBF7] to-transparent z-20 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#FDFBF7] to-transparent z-20 pointer-events-none" />
 
-          {/* Marquee Track Container */}
+          {/* Carousel Track Container */}
           <div
-            className={`flex items-center gap-6 ${
-              direction === 'right' ? 'animate-marquee-right' : 'animate-marquee-left'
-            }`}
-            style={{
-              animationPlayState: isPaused ? 'paused' : 'running',
-            }}
+            ref={scrollRef}
+            className="flex items-center gap-6 overflow-x-auto no-scrollbar scroll-smooth px-6 sm:px-12 py-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {duplicatedImages.map((img, idx) => {
-              const originalIndex = idx % images.length;
+            {images.map((img, idx) => {
               return (
                 <div
-                  key={`marquee-${img.id}-${idx}`}
-                  onClick={() => setLightboxIndex(originalIndex)}
+                  key={`gallery-${img.id}-${idx}`}
+                  onClick={() => setLightboxIndex(idx)}
                   className="group relative w-[280px] sm:w-[340px] md:w-[380px] flex-shrink-0 bg-[#FAF6EE] border-2 border-[#D4AF37] rounded-2xl overflow-hidden shadow-lg card-paper-texture cursor-pointer hover:border-[#D4AF37] hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   {/* Corner Filigree Accents */}

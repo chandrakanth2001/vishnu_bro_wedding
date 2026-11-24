@@ -17,7 +17,7 @@ export const WeddingDetails: React.FC = () => {
       id: 'muhurtham',
       title: 'Sacred Muhūrtham',
       value: weddingData.weddingDate.muhurtham,
-      subValue: 'Vrishabha Rasi / Traditional Timing',
+      subValue: '',
       icon: Clock,
     },
     {
@@ -82,9 +82,9 @@ export const WeddingDetails: React.FC = () => {
                     {item.value}
                   </h3>
 
-                  {/* <p className="font-cormorant text-xs sm:text-sm text-[#7A5C14] italic">
+                  <p className="font-cormorant text-md sm:text-sm text-[#7A5C14] italic">
                     {item.subValue}
-                  </p> */}
+                  </p>
                 </div>
 
                 {/* Additional QR & Directions block for Venue Card */}

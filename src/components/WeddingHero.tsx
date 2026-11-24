@@ -1,6 +1,6 @@
 import React from 'react';
 import { weddingData } from '../data/wedding';
-import { VSMonogram, GoldLotusDivider, MullappooGarlands } from './KeralaElements';
+import { GoldLotusDivider, MullappooGarlands } from './KeralaElements';
 
 export const WeddingHero: React.FC = () => {
   return (
@@ -24,13 +24,19 @@ export const WeddingHero: React.FC = () => {
 
         {/* Content Container aligned inside the arch */}
         <div className="relative z-10 text-center px-6 sm:px-14 pt-36 sm:pt-44 pb-8 sm:pb-12 flex flex-col items-center justify-center">
-          {/* Monogram Top Header */}
-          <VSMonogram className="mb-1 sm:mt-1" />
+          {/* Ganapathy Top Header */}
+          <div className="flex justify-center select-none mb-1 sm:mt-1">
+            <img
+              src="/assets/ganapathy.png"
+              alt="Lord Ganapathy"
+              className="w-30 h-30 object-contain drop-shadow-md"
+            />
+          </div>
 
           {/* Host Lineage Announcement */}
 
 
-          <p className="font-cormorant mt-10 text-xs sm:text-sm italic text-[#7A5C14] max-w-md mx-auto px-2">
+          <p className="font-cormorant mt-5 text-xs sm:text-sm italic text-[#7A5C14] max-w-md mx-auto px-2">
             What started as a beautiful coincidence,
             slowly turned into countless memories,
             shared dreams, and a love meant to last forever.
