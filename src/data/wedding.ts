@@ -170,6 +170,16 @@ export const weddingData: WeddingConfig = {
 
   ],
 
+  reception: {
+    title: 'Post-Wedding Reception',
+    hostedBy: 'Hosted by Groom',
+    date: '23rd January 2027',
+    dayOfWeek: 'Saturday',
+    time: '5:00 PM to 8:30 PM',
+    venueName: 'ALSAJ Convention Centre',
+    venueLocation: 'Kattakada',
+  },
+
   music: {
     title: 'Kerala Wedding Instrumental Melody',
     artist: 'Traditional Nadaswaram & Thavil',

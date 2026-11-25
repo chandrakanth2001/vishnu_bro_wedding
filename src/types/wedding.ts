@@ -81,6 +81,15 @@ export interface WeddingConfig {
     blessingQuote: string;
   };
   events: EventItem[];
+  reception?: {
+    title: string;
+    hostedBy: string;
+    date: string;
+    dayOfWeek: string;
+    time: string;
+    venueName: string;
+    venueLocation: string;
+  };
   gallery: GalleryImage[];
   initialBlessings: BlessingMessage[];
   music: {
