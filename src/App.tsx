@@ -9,6 +9,7 @@ import { EventsTimeline } from './components/EventsTimeline';
 import { VenueSection } from './components/VenueSection';
 import { PhotoGallery } from './components/PhotoGallery';
 import { BlessingsSection } from './components/BlessingsSection';
+import { ReceptionSection } from './components/ReceptionSection';
 import { Footer } from './components/Footer';
 import { MusicController } from './components/MusicController';
 import { RSVPModal } from './components/RSVPModal';
@@ -61,6 +62,9 @@ export function App() {
 
           {/* Family Wishes & Guest Blessings Wall */}
           <BlessingsSection />
+
+          {/* Post-Wedding Reception Hosted by Groom */}
+          <ReceptionSection />
 
           {/* Footer */}
           <Footer onOpenRSVP={() => setRsvpModalOpen(true)} />
