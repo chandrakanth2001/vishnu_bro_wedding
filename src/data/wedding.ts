@@ -5,7 +5,7 @@ export const weddingData: WeddingConfig = {
     bride: {
       name: 'Nayana',
       fullName: 'Nayana Kalyani',
-      parents: 'Bineeb Kumar & Asha V S',
+      parents: 'Bineeb Kumar D & Asha V S',
       grandparents: 'Late Cheriyath M. N. Gopalan Nair & Late Smt. T. Chellamma',
       residence: 'Nayanam, Ooruttambalam, Thiruvananthapuram',
       image: '/assets/bride.jpeg',
@@ -41,7 +41,7 @@ export const weddingData: WeddingConfig = {
   familyWishes: {
     parentsBride: 'V.G. Vijayakumar & Suvarna Vijayakumar',
     parentsGroom: 'Gopakumar & Indu Gopakumar',
-    bestWishesFrom: 'VINYA PRADEEP',
+    bestWishesFrom: 'Roopan Vaishak B K & VINYA PRADEEP',
     blessingQuote: 'Your presence and blessings are the greatest gifts we could receive.',
   },
 
