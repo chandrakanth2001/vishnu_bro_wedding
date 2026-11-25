@@ -90,6 +90,8 @@ export const BlessingsSection: React.FC = () => {
   };
 
   const previewBlessings = blessings.slice(0, 4);
+  const [firstWisher, ...otherWishers] = weddingData.familyWishes.bestWishesFrom.split(' & ');
+  const secondWisher = otherWishers.join(' & ');
 
   return (
     <section id="blessings" className="py-20 px-4 bg-[#FAF6EE] relative overflow-hidden">
@@ -125,8 +127,16 @@ export const BlessingsSection: React.FC = () => {
             <span className="font-cinzel text-[10px] font-bold tracking-[0.25em] text-[#541D30] uppercase block mb-1">
               Best Wishes From
             </span>
-            <p className="font-cinzel text-base font-bold text-[#2C221E] tracking-widest">
-              {weddingData.familyWishes.bestWishesFrom}
+            <p className="font-cinzel text-sm sm:text-base font-bold text-[#2C221E] tracking-widest leading-relaxed">
+              {secondWisher ? (
+                <>
+                  <span className="block sm:inline whitespace-nowrap">{firstWisher}</span>{' '}
+                  <span className="block sm:inline my-0.5 sm:my-0">&amp;</span>{' '}
+                  <span className="block sm:inline whitespace-nowrap">{secondWisher}</span>
+                </>
+              ) : (
+                weddingData.familyWishes.bestWishesFrom
+              )}
             </p>
           </div>
         </motion.div>
